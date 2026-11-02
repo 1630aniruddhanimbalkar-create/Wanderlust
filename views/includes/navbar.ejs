@@ -1,0 +1,105 @@
+<style>
+  .btn-search {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 1rem;
+  }
+  .navbar-nav {
+    margin-right: auto;
+  }
+</style>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+    <div class="navbar-nav">
+      <a class="nav-link" href="/listings"><b>WanderLust</b></a>
+    </div>
+
+    <!-- Mobile Toggler (Triggers Offcanvas) -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#mobileMenu"
+      aria-controls="mobileMenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Navigation -->
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2 search-inp"
+            type="search"
+            placeholder="Search Destinations"
+          />
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto d-none d-md-flex">
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+
+        <% if (typeof currUser === "undefined" || !currUser) { %>
+        <a class="nav-link fw-bold" href="/signup">Sign Up</a>
+        <a class="nav-link fw-bold" href="/login">Log in</a>
+        <% } else { %>
+        <a class="nav-link fw-bold" href="/logout">Log Out</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE OFFCANVAS MENU (Visible Only on Small Screens) -->
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="mobileMenu"
+  aria-labelledby="mobileMenuLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column gap-3">
+    <a class="nav-link" href="/listings/new">Airbnb your home</a>
+
+    <% if (typeof currUser === "undefined" || !currUser) { %>
+    <a class="nav-link fw-bold" href="/signup">Sign Up</a>
+    <a class="nav-link fw-bold" href="/login">Log in</a>
+    <% } else { %>
+    <a class="nav-link fw-bold" href="/logout">Log Out</a>
+    <% } %>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
